@@ -25,29 +25,28 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Container 1: Slider
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.9,
+              height: MediaQuery.of(context).size.height * 0.5, // Adjust as needed
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.all(30.0),
+                  Padding(
+                    padding: EdgeInsets.all(16.0),
                     child: Text(
                       'Bayrak\'s Catering',
                       style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: 'DM Serif Display',
-
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   CarouselSlider(
                     options: CarouselOptions(
-                      height: MediaQuery.of(context).size.height * 0.75,
+                      height: MediaQuery.of(context).size.height * 0.4, // Adjust as needed
                       viewportFraction: 1.0,
                       autoPlay: true,
                       enlargeCenterPage: false,
@@ -70,104 +69,94 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             // Container 2: Stay in the Loop Text, Email Field, and Featured Menu Items
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-
-              child: Padding(
-                padding: const EdgeInsets.all(24.0), // Adjust the padding as needed
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.all(12.0),
-                      child: Text(
-                        'Stay in the Loop',
-                        style: TextStyle(
-                          fontFamily: 'DM Serif Display',
-                          fontSize: 24,
-                        ),
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'Stay in the Loop',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Center(
-                      child: ClipRRect(
+                  ),
+                  Center(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.6, // Adjust as needed
+                      margin: EdgeInsets.symmetric(vertical: 15),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.red,
+                          width: 2,
+                        ),
                         borderRadius: BorderRadius.circular(25),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width / 3,
-                          margin: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(25), // Round corners for the white background
-                            border: Border.all(
-                              color: Colors.red, // Border color
-                              width: 2, // Border width
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 12.0),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  hintText: 'Email',
+                                  border: InputBorder.none,
+                                ),
+                              ),
                             ),
                           ),
-                          child: Row(
-                            children: [
-                              const Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 12.0),
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                      hintText: 'Email',
-                                      border: InputBorder.none,
-                                    ),
-                                  ),
-                                ),
+                          SizedBox(width: 6),
+                          ElevatedButton(
+                            onPressed: () {
+                              // Implement sign-up functionality
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.red,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25.0),
                               ),
-                              const SizedBox(width: 6, height: 18),
-                              ElevatedButton(
-                                onPressed: () {
-                                  // Implement sign-up functionality
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.red,
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                                  ),
-                                ),
-                                child: const Text('Sign Up'),
-                              ),
-                            ],
+                            ),
+                            child: Text('Sign Up'),
                           ),
-                        ),
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(34.0),
-                      child: Text(
-                        'Featured Items',
-                        style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.w300,
-                        fontFamily: 'DM Serif Display',
-                      ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                      child: Wrap(
-                        spacing: 20.0,
-                        runSpacing: 20.0,
-                        alignment: WrapAlignment.center,
-                        children: [
-                          _buildCard('assets/pistachio-baklava.jpg', 'Pistachio baklava', '80.00'),
-                          _buildCard('assets/sut-halwa.jpg', 'Sut halwa', '35.00'),
-                          _buildCard('assets/walnut-baklava.jpg', 'Walnut baklava', '70.00'),
                         ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Text(
+                      'Featured Items',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Wrap(
+                      spacing: 20.0,
+                      runSpacing: 20.0,
+                      alignment: WrapAlignment.center,
+                      children: [
+                        _buildCard('assets/pistachio-baklava.jpg', 'Pistachio baklava', '80.00'),
+                        _buildCard('assets/sut-halwa.jpg', 'Sut halwa', '35.00'),
+                        _buildCard('assets/walnut-baklava.jpg', 'Walnut baklava', '70.00'),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
             // Container 3: Background Image
-            Container (
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.8,
+            Container(
+              height: MediaQuery.of(context).size.height * 0.5, // Adjust as needed
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: const AssetImage('assets/turkey.jpg'),
+                  image: AssetImage('assets/turkey.jpg'),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
                     Colors.black.withOpacity(0.7),
@@ -175,22 +164,22 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              child: Stack( //map child
+              child: Stack(
                 children: [
                   Positioned(
-                    top: 70,
-                    left: 100,
+                    top: 20,
+                    left: 60,
                     child: Card(
                       elevation: 8,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Container(
-                        width: 500,
-                        height: 300,
+                        width: MediaQuery.of(context).size.width * 0.5, // Adjust as needed
+                        height: MediaQuery.of(context).size.height * 0.3, // Adjust as needed
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          image: const DecorationImage(
+                          image: DecorationImage(
                             image: AssetImage('assets/map.png'),
                             fit: BoxFit.cover,
                           ),
@@ -199,54 +188,49 @@ class MyHomePage extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 70,
-                    left: 680,
+                    top: 20,
+                    right: 60,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'Location & Hours',
                           style: TextStyle(
-                            fontSize: 22,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
                         ),
-                        const SizedBox(height: 8),
-                        const Text(
+                        SizedBox(height: 8),
+                        Text(
                           '1136 Virginia Lane\nConcord, CA 94520\n(925)250-2708\n\nDkbrands24@gmail.com',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
-                            letterSpacing: 0.5
+                            fontSize: 14,
+                            letterSpacing: 0.5,
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8),
                         TextButton(
                           onPressed: () {
-                            js.context.callMethod('open', ['https://www.google.com/maps/place/37%C2%B057\'26.3%22N+122%C2%B002\'33.0%22W/@37.9573072,-122.0450779,17z/data=!3m1!4b1!4m4!3m3!8m2!3d37.957303!4d-122.042503?entry=ttu']);
+                            js.context.callMethod('open',
+                                ['https://www.google.com/maps/place/37%C2%B057\'26.3%22N+122%C2%B002\'33.0%22W/@37.9573072,-122.0450779,17z/data=!3m1!4b1!4m4!3m3!8m2!3d37.957303!4d-122.042503?entry=ttu']);
                           },
-                          child: const Text(
+                          child: Text(
                             'Get directions',
                             style: TextStyle(
                               color: Colors.blue,
                               fontWeight: FontWeight.bold,
-                              fontSize: 16
+                              fontSize: 14,
                             ),
                           ),
                         ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          'Monday 09:00 am - 05:00 pm\n'
-                              'Tuesday 09:00 am - 05:00 pm\n'
-                              'Wednesday 09:00 am - 05:00 pm\n'
-                              'Thursday 09:00 am - 05:00 pm\n'
-                              'Friday 09:00 am - 05:00 pm\n'
-                              'Saturday 09:00 am - 05:00 pm\n'
-                              'Sunday Closed',
+                        SizedBox(height: 16),
+                        Text(
+                          'Monday - Friday: 09:00 am - 05:00 pm\nSaturday: 09:00 am - 05:00 pm\nSunday: Closed',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 18
+                            fontSize: 16,
                           ),
                         ),
                       ],
@@ -254,39 +238,40 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ],
               ),
-            ),            // Container 4: Additional Container
+            ),
+            // Container 4: Additional Container
             Container(
-        width: double.infinity,
-        height: 100, // Adjust the height as needed
-        color: Colors.grey, // Set the desired background color or remove this line for transparency
-        child: const Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '© 2023 Bayrak\'s Catering. All Rights Reserved',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
+              height: 100, // Adjust as needed
+              color: Colors.grey,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '© 2023 Bayrak\'s Catering. All Rights Reserved',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Text(
+                      'Privacy Policy | Terms & Conditions',
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Text(
-                '\nPrivacy Policy | Terms & Conditions',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.black,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+            ),
           ],
         ),
       ),
     );
   }
+
 
   Widget _buildCard(String imagePath,String itemName,String price) {
     return Container(
