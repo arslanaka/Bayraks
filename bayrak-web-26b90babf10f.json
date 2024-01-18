@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "bayrak-web",
+  "private_key_id": "26b90babf10ff4f4f77864b014f909743d4af2ea",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC+9pE3TBh3+H/R\nzDQ5dU0jmWxZ5NuKsWDOUdSC4Fb1UFxtxbpMXH/D7rBFxZbDOgo7SmN+OzJgxtka\ncYwIBjeUKj83nGNhB0ENnr+7UJ5QQ3PAt3+w8vpFr2Rex+CW9bac/cvYGxezUZbB\nJrMlnWtRbKPlWOkufD6Z7Oe53R+uUTW5nxrVlIbzDApUvYy4mFN41u8wQfKPq+UA\n5aFHm1VkRIJsKgBkNF+f4qWvj6vTE/VmYCC10tHtWn994hx2TojGaJ56YAGggDE1\nXsZRylTyr3dumnM0XddtEelSDc0bo5pgEMcLz96sEcHhYn3m58SX8GlfNo13XOyD\npwt4S+zDAgMBAAECggEABWM9e5rpAdGAAbJKMujNUVjNxsd/Li2M9qU2Yq7jpS4s\nPWibtfXSIPwF+yH0+/MSQNP7dJ9E75gMngNgGQXb4ZFDkVUXNLCYtEKrVCSVItyU\nUnaa4qooR3kIUug+vOOX0FwUuTcidwuxPifSXBhR48013o2gnpAg0ATwEL1dXHSf\njCebXEu3xSO2q6IuCTBmusvHpilD53S4uV4ofem+Nd7F6xPT+kDM2pjyjyl7D30k\n3A33REDdvUDHRP3ohPkA2/pcBGBPRHqzTMJ8u0gVmL6n4OyM6pniHaMlYMtVKaH6\niHn35YIvz17/0Jw/++yfAXQgbvHC/3BisWf6FPhMaQKBgQD2HQcVWwvtfWgEoKy/\nlQRPT8z/QYMhZm2coRhNioagu7HPm7hadSYr4R9tYgDm45b1qkS5lBN9VjIRN0uD\nS9Pf+oiwS82kjfx9t4r0niGBJLGV8VFJ5NhKdZPfIcM2IvpFSlNHyyF41Rg6pbcy\nEXsez/Woa99R9J5T38W1zqbfjwKBgQDGomMzCxFh0jLurA5a3S705zP3I+xb7gmB\n0edgMISyfy2EuuFfT7oB/ENn6mtu0mKBk5B9ZHakvQW+v7XRZPjzs8Dq5Ujk7JUt\nREKm86Z9kmwA1odZVTnbHupO3qTeAKwUFlzxjIrFbwXTKNSchx1S1lw9jHFoevAk\n7A9fOSsFjQKBgCbxXOeSKob/qu/ghLUj3TS3idZyBU/Jp1p7Wx8Z5keUq4QQPdGC\na/HRg2mJcl8WcBKbSJicx6CzfOSgfUBfRT1RpUNQG1AIb4Vs/33Jb7/BkKALOTOa\nFGdjx2wtKXhtfHBuXFMl3zwBa/4LrrsrbPHpMhPeTc3oCQ14gQ5NjrYdAoGACMDP\nLkimk3D33ZynZUmp8BDgMVvb5pEuyhG96Hc64cLI9rhlhhW1VLERJ1slMNUEkkE2\ndNAgilHqFuXL1VZlwheBwNgpxizGxh/j8Ad8prv1FnRdsooW6pkKKj+VdFMDQj9a\nCSrwUpL55rw94kfx+tyHZA70UG5adsYQR1n1k2ECgYBYzBic2aS/WDzGjWcDJ6gK\newlSKx9cEi0lPGjdGpd8cIH5hD6hF7Fl6qCQqfjw2fx/dnvao88ZQg1LwEhzM1YH\nG9Cv4IGvVfqywgVbRbUwHL0MFxoBZtXI1jvhu1hKDmiM/kKHtZ/a2jA6qN9E299p\n2vFodWvYzE3V/y3GSeZohQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "darakshankhan@bayrak-web.iam.gserviceaccount.com",
+  "client_id": "118415264174391449480",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/darakshankhan%40bayrak-web.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

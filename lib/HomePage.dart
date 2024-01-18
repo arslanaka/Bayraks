@@ -1,7 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:js' as js;
+
+import 'DialogHelper.dart';
+
 
 class MyHomePage extends StatelessWidget {
 
@@ -19,6 +23,9 @@ class MyHomePage extends StatelessWidget {
     'assets/istanbul5.jpg',
     'assets/istanbul6.jpg',
   ];
+
+  TextEditingController textEditingController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +108,7 @@ class MyHomePage extends StatelessWidget {
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 12.0),
                               child: TextField(
+                                controller: textEditingController,
                                 decoration: InputDecoration(
                                   hintText: 'Email',
                                   border: InputBorder.none,
@@ -110,8 +118,9 @@ class MyHomePage extends StatelessWidget {
                           ),
                           SizedBox(width: 6),
                           ElevatedButton(
-                            onPressed: () {
-                              // Implement sign-up functionality
+                            onPressed: () async {
+                              validateEmail(textEditingController.text);
+
                             },
                             style: ElevatedButton.styleFrom(
                               primary: Colors.red,
@@ -120,8 +129,7 @@ class MyHomePage extends StatelessWidget {
                               ),
                             ),
                             child: Text('Sign Up'),
-                          ),
-                        ],
+                          ),                        ],
                       ),
                     ),
                   ),
@@ -153,7 +161,7 @@ class MyHomePage extends StatelessWidget {
             ),
             // Container 3: Background Image
             Container(
-              height: MediaQuery.of(context).size.height * 0.5, // Adjust as needed
+              height: MediaQuery.of(context).size.height * 0.9, // Adjust as needed
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/turkey.jpg'),
@@ -187,12 +195,14 @@ class MyHomePage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // Content Column
                   Positioned(
-                    top: 20,
-                    right: 60,
+                    top: 280,
+                    left: 60,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        // Location & Hours Heading
                         Text(
                           'Location & Hours',
                           style: TextStyle(
@@ -201,20 +211,81 @@ class MyHomePage extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
-                        SizedBox(height: 8),
-                        Text(
-                          '1136 Virginia Lane\nConcord, CA 94520\n(925)250-2708\n\nDkbrands24@gmail.com',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            letterSpacing: 0.5,
-                          ),
+                        SizedBox(height: 16),
+
+                        // Location/Address Icon and Text
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_on,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              '1136 Virginia Lane\nConcord, CA 94520\n(925)250-2708',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                letterSpacing: 0.5,
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(height: 8),
+                        SizedBox(height: 16),
+
+                        // Email Icon and Text
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.email,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              'Dkbrands24@gmail.com',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                letterSpacing: 0.5,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+
+                        // Timing Icon and Text
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.access_time,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                            SizedBox(width: 8),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Monday - Saturday: 09:00 am - 05:00 pm',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+
+                        // Get Directions Button
                         TextButton(
                           onPressed: () {
-                            js.context.callMethod('open',
-                                ['https://www.google.com/maps/place/37%C2%B057\'26.3%22N+122%C2%B002\'33.0%22W/@37.9573072,-122.0450779,17z/data=!3m1!4b1!4m4!3m3!8m2!3d37.957303!4d-122.042503?entry=ttu']);
+                            js.context.callMethod('open', [
+                              'https://www.google.com/maps/place/37%C2%B057\'26.3%22N+122%C2%B002\'33.0%22W/@37.9573072,-122.0450779,17z/data=!3m1!4b1!4m4!3m3!8m2!3d37.957303!4d-122.042503?entry=ttu'
+                            ]);
                           },
                           child: Text(
                             'Get directions',
@@ -223,14 +294,6 @@ class MyHomePage extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
                             ),
-                          ),
-                        ),
-                        SizedBox(height: 16),
-                        Text(
-                          'Monday - Friday: 09:00 am - 05:00 pm\nSaturday: 09:00 am - 05:00 pm\nSunday: Closed',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
                           ),
                         ),
                       ],
@@ -272,7 +335,13 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-
+  Future<void> signUp(String email) async {
+    debugPrint('email Entered: $email');
+    final databaseReference = FirebaseDatabase.instance.reference();
+    await databaseReference.child('emails').push().set({'email': email});
+    textEditingController.clear();
+    DialogHelper.showSuccessDialog('Email has been successfully saved.');
+  }
   Widget _buildCard(String imagePath,String itemName,String price) {
     return Container(
       width: 300,
@@ -308,6 +377,19 @@ class MyHomePage extends StatelessWidget {
       ),
     );
   }
+
+  void validateEmail(String email) {
+
+    final bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
+
+    if(emailValid){
+      signUp(textEditingController.text);
+    }else{
+      DialogHelper.showErrorDialog('Email is not valid.');
+    }
+
+  }
+
 
 
 
