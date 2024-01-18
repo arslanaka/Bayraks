@@ -36,12 +36,12 @@ class MyHomePage extends StatelessWidget {
           children: [
             // Container 1: Slider
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.5, // Adjust as needed
+              height: MediaQuery.of(context).size.height * 0.7, // Adjust as needed
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(14.0),
                     child: Text(
                       'Bayrak\'s Catering',
                       style: TextStyle(
@@ -53,7 +53,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   CarouselSlider(
                     options: CarouselOptions(
-                      height: MediaQuery.of(context).size.height * 0.4, // Adjust as needed
+                      height: MediaQuery.of(context).size.height * 0.5, // Adjust as needed
                       viewportFraction: 1.0,
                       autoPlay: true,
                       enlargeCenterPage: false,
@@ -77,12 +77,12 @@ class MyHomePage extends StatelessWidget {
             ),
             // Container 2: Stay in the Loop Text, Email Field, and Featured Menu Items
             Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(2.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(2.0),
                     child: Text(
                       'Stay in the Loop',
                       style: TextStyle(
@@ -93,7 +93,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   Center(
                     child: Container(
-                      width: MediaQuery.of(context).size.width * 0.6, // Adjust as needed
+                      width: MediaQuery.of(context).size.width * 0.7, // Adjust as needed
                       margin: EdgeInsets.symmetric(vertical: 15),
                       decoration: BoxDecoration(
                         border: Border.all(
