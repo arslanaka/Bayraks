@@ -26,6 +26,8 @@ class MyHomePage extends StatelessWidget {
 
   TextEditingController textEditingController = TextEditingController();
 
+  MyHomePage({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class MyHomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(14.0),
                     child: Text(
                       'Bayrak\'s Catering',
@@ -77,11 +79,11 @@ class MyHomePage extends StatelessWidget {
             ),
             // Container 2: Stay in the Loop Text, Email Field, and Featured Menu Items
             Padding(
-              padding: EdgeInsets.all(2.0),
+              padding: const EdgeInsets.all(2.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(2.0),
                     child: Text(
                       'Stay in the Loop',
@@ -94,7 +96,7 @@ class MyHomePage extends StatelessWidget {
                   Center(
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.7, // Adjust as needed
-                      margin: EdgeInsets.symmetric(vertical: 15),
+                      margin: const EdgeInsets.symmetric(vertical: 15),
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: Colors.red,
@@ -106,34 +108,34 @@ class MyHomePage extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 12.0),
+                              padding: const EdgeInsets.symmetric(horizontal: 12.0),
                               child: TextField(
                                 controller: textEditingController,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   hintText: 'Email',
                                   border: InputBorder.none,
                                 ),
                               ),
                             ),
                           ),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 6),
                           ElevatedButton(
                             onPressed: () async {
                               validateEmail(textEditingController.text);
 
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.red,
+                              backgroundColor: Colors.red,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                             ),
-                            child: Text('Sign Up'),
+                            child: const Text('Sign Up'),
                           ),                        ],
                       ),
                     ),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Text(
                       'Featured Items',
@@ -144,7 +146,7 @@ class MyHomePage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: Wrap(
                       spacing: 20.0,
                       runSpacing: 20.0,
@@ -164,7 +166,7 @@ class MyHomePage extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.9, // Adjust as needed
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/turkey.jpg'),
+                  image: const AssetImage('assets/turkey.jpg'),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
                     Colors.black.withOpacity(0.7),
@@ -187,7 +189,7 @@ class MyHomePage extends StatelessWidget {
                         height: MediaQuery.of(context).size.height * 0.3, // Adjust as needed
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
+                          image: const DecorationImage(
                             image: AssetImage('assets/map.png'),
                             fit: BoxFit.cover,
                           ),
@@ -203,7 +205,7 @@ class MyHomePage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // Location & Hours Heading
-                        Text(
+                        const Text(
                           'Location & Hours',
                           style: TextStyle(
                             fontSize: 18,
@@ -211,10 +213,10 @@ class MyHomePage extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
 
                         // Location/Address Icon and Text
-                        Row(
+                        const Row(
                           children: [
                             Icon(
                               Icons.location_on,
@@ -232,10 +234,10 @@ class MyHomePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
 
                         // Email Icon and Text
-                        Row(
+                        const Row(
                           children: [
                             Icon(
                               Icons.email,
@@ -253,10 +255,10 @@ class MyHomePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
 
                         // Timing Icon and Text
-                        Row(
+                        const Row(
                           children: [
                             Icon(
                               Icons.access_time,
@@ -278,7 +280,7 @@ class MyHomePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
 
                         // Get Directions Button
                         TextButton(
@@ -287,7 +289,7 @@ class MyHomePage extends StatelessWidget {
                               'https://www.google.com/maps/place/37%C2%B057\'26.3%22N+122%C2%B002\'33.0%22W/@37.9573072,-122.0450779,17z/data=!3m1!4b1!4m4!3m3!8m2!3d37.957303!4d-122.042503?entry=ttu'
                             ]);
                           },
-                          child: Text(
+                          child: const Text(
                             'Get directions',
                             style: TextStyle(
                               color: Colors.blue,
@@ -306,7 +308,7 @@ class MyHomePage extends StatelessWidget {
             Container(
               height: 100, // Adjust as needed
               color: Colors.grey,
-              child: Center(
+              child: const Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -343,7 +345,7 @@ class MyHomePage extends StatelessWidget {
     DialogHelper.showSuccessDialog('Email has been successfully saved.');
   }
   Widget _buildCard(String imagePath,String itemName,String price) {
-    return Container(
+    return SizedBox(
       width: 300,
       height: 350,
       child: Column(
@@ -367,7 +369,7 @@ class MyHomePage extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
            Text(
             itemName,
             style: const TextStyle(fontWeight: FontWeight.bold),
